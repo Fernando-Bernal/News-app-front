@@ -1,9 +1,8 @@
 import React from "react";
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider } from "@mantine/core";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import './App.css';
-
+import "./App.css";
 
 function App() {
   return (

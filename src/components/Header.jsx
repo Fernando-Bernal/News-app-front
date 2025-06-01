@@ -8,7 +8,7 @@ function Header() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "1.2rem 2rem",
-        background: "#f0f0f0",
+        background: "#f0f0f0a1",
         boxShadow: "0 2px 8px 0 #1d1d1d21",
         borderRadius: 12,
         marginBottom: 32,
