@@ -37,11 +37,21 @@ function Header({ actions }) {
           transition: "font-size 0.2s",
           ...(window.innerWidth >= 600 && { fontSize: "2rem" }),
         }}
-        onClick={() => navigate("/")} 
+        onClick={() => navigate("/")}
       >
         MindFactory Noticias
       </button>
-      <Group  sx={{"@media (max-width: 600px)": {"--group-justify": "flex-end", }, }} >{actions}</Group>
+      <Group
+        spacing="xs"
+        sx={{
+          "@media (max-width: 600px)": {
+            justifyContent: "flex-end",
+            width: "100%",
+          },
+        }}
+      >
+        {actions}
+      </Group>
     </header>
   );
 }

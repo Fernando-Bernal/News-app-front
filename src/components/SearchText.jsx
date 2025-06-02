@@ -35,7 +35,16 @@ function SearchText({ setSearchResults }) {
     <Container size="xs" px="xs" my="md">
       <Paper shadow="xs" p="md" mb="xl">
         <form onSubmit={handleSearch}>
-          <Group noWrap>
+          <Group
+            noWrap
+            sx={{
+              "@media (max-width: 600px)": {
+                flexDirection: "column",
+                alignItems: "stretch",
+                gap: 8,
+              },
+            }}
+          >
             <TextInput
               placeholder="Buscar por nombre o autor"
               value={query}
@@ -44,26 +53,51 @@ function SearchText({ setSearchResults }) {
               style={{ flex: 1, minWidth: 0 }}
               size="md"
               autoComplete="off"
+              sx={{
+                "@media (max-width: 600px)": {
+                  width: "100%",
+                },
+              }}
             />
-            <Button
-              type="submit"
-              variant="gradient"
-              gradient={{ from: "indigo", to: "grape" }}
-              size="md"
+            <Group
+              noWrap
+              sx={{
+                "@media (max-width: 600px)": {
+                  width: "100%",
+                  justifyContent: "space-between",
+                },
+              }}
             >
-              Buscar
-            </Button>
-            <Button
-              type="button"
-              color="gray"
-              variant="outline"
-              size="md"
-              onClick={handleClear}
-              disabled={loading && !query}
-              leftIcon={<IconX size={16} />}
-            >
-              Limpiar
-            </Button>
+              <Button
+                type="submit"
+                variant="gradient"
+                gradient={{ from: "indigo", to: "grape" }}
+                size="md"
+                sx={{
+                  "@media (max-width: 600px)": {
+                    flex: 1,
+                  },
+                }}
+              >
+                Buscar
+              </Button>
+              <Button
+                type="button"
+                color="gray"
+                variant="outline"
+                size="md"
+                onClick={handleClear}
+                disabled={loading && !query}
+                leftIcon={<IconX size={16} />}
+                sx={{
+                  "@media (max-width: 600px)": {
+                    flex: 1,
+                  },
+                }}
+              >
+                Limpiar
+              </Button>
+            </Group>
           </Group>
         </form>
         {loading && <Loader mt="md" />}
