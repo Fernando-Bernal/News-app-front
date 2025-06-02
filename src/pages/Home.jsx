@@ -3,12 +3,14 @@ import axios from "axios";
 import Header from "../components/Header";
 import LastNews from "../components/LastNews";
 import NewsCarousel from "../components/NewsCarousel";
-import {Modal, Button } from "@mantine/core";
+import { Modal, Button } from "@mantine/core";
 import NewsForm from "../components/NewsForm";
+import SearchText from "../components/SearchText";
 
 function Home() {
   const [news, setNews] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState(null);
 
   useEffect(() => {
     axios
@@ -21,7 +23,14 @@ function Home() {
     <div>
       <Header
         actions={
-          <Button onClick={() => setModalOpen(true)} variant="gradient" gradient={{ from: "indigo", to: "grape", deg: 143 }} size="md" radius="xl" boxShadow="md">
+          <Button
+            onClick={() => setModalOpen(true)}
+            variant="gradient"
+            gradient={{ from: "indigo", to: "grape", deg: 143 }}
+            size="md"
+            radius="xl"
+            boxShadow="md"
+          >
             Crear noticia
           </Button>
         }
@@ -47,7 +56,11 @@ function Home() {
           onCancel={() => setModalOpen(false)}
         />
       </Modal>
-      <LastNews lastNews={news.slice(0, 3)} />
+      <SearchText setSearchResults={setSearchResults} />
+      <LastNews
+        lastNews={searchResults !== null ? searchResults : news.slice(0, 3)}
+        title={searchResults !== null ? "Resultados de búsqueda" : "Últimas Novedades"}
+      />
       <NewsCarousel news={news} />
     </div>
   );

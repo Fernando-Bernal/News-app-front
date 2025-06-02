@@ -10,7 +10,6 @@ import {
   Button,
   Modal,
   Group,
-  Stack,
   Modal as MantineModal
 } from "@mantine/core";
 import axios from "axios";
