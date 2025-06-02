@@ -123,10 +123,10 @@ function NewsForm({ initialData, onSuccess, onCancel }) {
               disabled={loading}
             />
             <Group position="right" mt="md">
-              <Button variant="default" onClick={onCancel} disabled={loading}>
+              <Button variant="default" onClick={onCancel} disabled={loading} radius={"xl"}>
                 Cancelar
               </Button>
-              <Button type="submit" loading={loading}>
+              <Button type="submit" loading={loading} gradient={{ from: "indigo", to: "grape" }} radius={"xl"}>
                 {initialData ? "Actualizar noticia" : "Crear noticia"}
               </Button>
             </Group>

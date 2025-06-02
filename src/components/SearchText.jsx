@@ -73,9 +73,11 @@ function SearchText({ setSearchResults }) {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "grape" }}
                 size="md"
+                radius="xl"
                 sx={{
                   "@media (max-width: 600px)": {
                     flex: 1,
+                    size: "xs"
                   },
                 }}
               >
@@ -86,12 +88,14 @@ function SearchText({ setSearchResults }) {
                 color="gray"
                 variant="outline"
                 size="md"
+                radius="xl"
                 onClick={handleClear}
                 disabled={loading && !query}
                 leftIcon={<IconX size={16} />}
                 sx={{
                   "@media (max-width: 600px)": {
                     flex: 1,
+                    size: "xs"
                   },
                 }}
               >

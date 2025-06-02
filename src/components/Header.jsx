@@ -11,35 +11,33 @@ function Header({ actions }) {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "1.2rem 2rem",
-        background: "#f0f0f0a1",
+        background: "#ffffff",
         boxShadow: "0 2px 8px 0 #1d1d1d21",
         borderRadius: 12,
         marginBottom: 32,
       }}
     >
       <button
-        type="button"
+        onClick={() => navigate("/")}
         style={{
-          color: "linear-gradient(90deg, #501aaf 0%, #7046ef 100%)",
-          background: "linear-gradient(90deg, #450bab 0%, #7752e8 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          fontWeight: 800,
-          fontSize: "1.2rem",
-          letterSpacing: 1,
-          fontFamily: "Inter, sans-serif",
-          filter: "drop-shadow(2px 3px 3px rgba(249, 68, 228, 0.957))",
-          cursor: "pointer",
-          outline: "none",
+          background: "none",
           border: "none",
           padding: 0,
-          backgroundClip: "text",
-          transition: "font-size 0.2s",
-          ...(window.innerWidth >= 600 && { fontSize: "2rem" }),
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
         }}
-        onClick={() => navigate("/")}
+        aria-label="Ir a la página principal"
       >
-        MindFactory Noticias
+        <img
+          src="/mf.png"
+          alt="MindFactory Noticias"
+          style={{
+            height: window.innerWidth >= 600 ? "80px" : "24px",
+            transition: "height 0.2s",
+            display: "block",
+          }}
+        />
       </button>
       <Group
         spacing="xs"
@@ -47,6 +45,7 @@ function Header({ actions }) {
           "@media (max-width: 600px)": {
             justifyContent: "flex-end",
             width: "100%",
+            size: "xs",
           },
         }}
       >
