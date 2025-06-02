@@ -1,5 +1,14 @@
 import { useState, useEffect } from "react";
-import { TextInput, Textarea, Button, Group, Loader, Stack, Overlay } from "@mantine/core";
+import {
+  TextInput,
+  Textarea,
+  Button,
+  Group,
+  Loader,
+  Stack,
+  Overlay,
+  Container,
+} from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -71,58 +80,60 @@ function NewsForm({ initialData, onSuccess, onCancel }) {
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      {loading && (
-        <Overlay center>
-          <Loader size="md" />
-        </Overlay>
-      )}
-      <form onSubmit={handleSubmit}>
-        <Stack>
-          <TextInput
-            label="Título"
-            name="title"
-            value={form.title}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-          <TextInput
-            label="Autor"
-            name="author"
-            value={form.author}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-          <Textarea
-            label="Contenido"
-            name="body"
-            value={form.body}
-            onChange={handleChange}
-            required
-            minRows={4}
-            disabled={loading}
-          />
-          <TextInput
-            label="URL de imagen"
-            name="image_url"
-            value={form.image_url}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-          <Group position="right" mt="md">
-            <Button variant="default" onClick={onCancel} disabled={loading}>
-              Cancelar
-            </Button>
-            <Button type="submit" loading={loading}>
-              {initialData ? "Actualizar noticia" : "Crear noticia"}
-            </Button>
-          </Group>
-        </Stack>
-      </form>
-    </div>
+    <Container size="xs" px="xs">
+      <div style={{ position: "relative" }}>
+        {loading && (
+          <Overlay center>
+            <Loader size="md" />
+          </Overlay>
+        )}
+        <form onSubmit={handleSubmit}>
+          <Stack>
+            <TextInput
+              label="Título"
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <TextInput
+              label="Autor"
+              name="author"
+              value={form.author}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <Textarea
+              label="Contenido"
+              name="body"
+              value={form.body}
+              onChange={handleChange}
+              required
+              minRows={4}
+              disabled={loading}
+            />
+            <TextInput
+              label="URL de imagen"
+              name="image_url"
+              value={form.image_url}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <Group position="right" mt="md">
+              <Button variant="default" onClick={onCancel} disabled={loading}>
+                Cancelar
+              </Button>
+              <Button type="submit" loading={loading}>
+                {initialData ? "Actualizar noticia" : "Crear noticia"}
+              </Button>
+            </Group>
+          </Stack>
+        </form>
+      </div>
+    </Container>
   );
 }
 

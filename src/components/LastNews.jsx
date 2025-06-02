@@ -1,7 +1,10 @@
 import NewsCardHome from "./NewsCardHome";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-function LastNews({lastNews}) {
+function LastNews({ lastNews }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <h2 style={{ textAlign: "left", margin: "20px 10px", color: "red" }}>Ultimas Novedades</h2>
@@ -10,19 +13,33 @@ function LastNews({lastNews}) {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-around",
-          gap: "20px",
+          gap: "10px",
           padding: "20px",
         }}
       >
         {lastNews && lastNews.length > 0 ? (
           lastNews.map((newsItem) => (
-            <NewsCardHome
+            <button
               key={newsItem.id}
-              title={newsItem.title}
-              author={newsItem.author}
-              date={newsItem.date}
-              image_url={newsItem.image_url || "https://via.placeholder.com/150"}
-            />
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                cursor: "pointer",
+                flex: 1,
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                textAlign: "inherit",
+              }}
+              onClick={() => navigate(`/news/${newsItem.id}`)}
+            >
+              <NewsCardHome
+                title={newsItem.title}
+                author={newsItem.author}
+                date={newsItem.date}
+                image_url={newsItem.image_url || "https://via.placeholder.com/150"}
+              />
+            </button>
           ))
         ) : (
           <p style={{ color: "#999", textAlign: "center", width: "100%" }}>
@@ -33,8 +50,6 @@ function LastNews({lastNews}) {
     </>
   );
 }
-
-
 
 LastNews.propTypes = {
   lastNews: PropTypes.arrayOf(

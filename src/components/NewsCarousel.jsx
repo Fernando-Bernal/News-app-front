@@ -2,9 +2,11 @@ import { Container, Title, Card, Button, Text } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
 import PropTypes from "prop-types";
-
+import { useNavigate } from "react-router-dom";
 
 function NewsCarousel({ news }) {
+  const navigate = useNavigate();
+  
   return (
     <Container size="lg" py="xl">
       <Title order={2} ta="center" mb="md">
@@ -67,7 +69,8 @@ function NewsCarousel({ news }) {
                 <Button
                   variant="white"
                   color="dark"
-                  onClick={() => (window.location.href = `/news/${item.id}`)}
+                  onClick={() => navigate(`/news/${item.id}`)}
+                  style={{ cursor: "pointer", maxWidth: 340, width: "100%" }}
                 >
                   Leer artículo
                 </Button>

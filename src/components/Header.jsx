@@ -1,7 +1,9 @@
 import { Group } from "@mantine/core";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 function Header({ actions }) {
+  const navigate = useNavigate();
   return (
     <header
       style={{
@@ -15,22 +17,31 @@ function Header({ actions }) {
         marginBottom: 32,
       }}
     >
-      <span
+      <button
+        type="button"
         style={{
           color: "linear-gradient(90deg, #501aaf 0%, #7046ef 100%)",
           background: "linear-gradient(90deg, #450bab 0%, #7752e8 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           fontWeight: 800,
-          fontSize: "2rem",
+          fontSize: "1.2rem",
           letterSpacing: 1,
           fontFamily: "Inter, sans-serif",
           filter: "drop-shadow(2px 3px 3px rgba(249, 68, 228, 0.957))",
+          cursor: "pointer",
+          outline: "none",
+          border: "none",
+          padding: 0,
+          backgroundClip: "text",
+          transition: "font-size 0.2s",
+          ...(window.innerWidth >= 600 && { fontSize: "2rem" }),
         }}
+        onClick={() => navigate("/")} 
       >
         MindFactory Noticias
-      </span>
-      <Group>{actions}</Group>
+      </button>
+      <Group  sx={{"@media (max-width: 600px)": {"--group-justify": "flex-end", }, }} >{actions}</Group>
     </header>
   );
 }
