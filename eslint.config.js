@@ -3,12 +3,19 @@ import globals from "globals";
 import react from "eslint-plugin-react";
 import prettier from "eslint-config-prettier";
 import { defineConfig } from "eslint/config";
-import parser from "@babel/eslint-parser";
 
 export default defineConfig([
   {
     files: ["**/*.{js,jsx,mjs,cjs}"],
     plugins: { js, react },
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: "module",
+      parserOptions: {
+        ecmaFeatures: { jsx: true }
+      },
+      globals: globals.browser,
+    },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
@@ -27,25 +34,5 @@ export default defineConfig([
         version: "detect",
       },
     },
-  },
-  {
-    files: ["**/*.{js,jsx,mjs,cjs}"],
-    languageOptions: { globals: globals.browser },
-  },
-  {
-    files: ["**/*.{js,jsx,mjs,cjs}"],
-    languageOptions: {
-      parser,
-      parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-          presets: ["@babel/preset-react"],
-        },
-        ecmaVersion: 2020,
-        sourceType: "module",
-        ecmaFeatures: { jsx: true },
-      },
-      globals: globals.browser,
-    },
-  },
+  }
 ]);

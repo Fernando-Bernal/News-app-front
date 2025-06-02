@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mantine/carousel": "^8.0.2",
     "@mantine/core": "^8.0.2",
     "@mantine/hooks": "^8.0.2",
     "@mantine/notifications": "^8.0.2",
@@ -19,6 +20,7 @@
     "@tabler/icons-react": "^3.33.0",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
+    "embla-carousel-react": "^8.6.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-react": "^7.37.5",
     "prettier": "^3.5.3",

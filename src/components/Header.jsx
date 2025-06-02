@@ -1,6 +1,7 @@
-import { Button } from "@mantine/core";
+import { Group } from "@mantine/core";
+import PropTypes from "prop-types";
 
-function Header() {
+function Header({ actions }) {
   return (
     <header
       style={{
@@ -24,21 +25,17 @@ function Header() {
           fontSize: "2rem",
           letterSpacing: 1,
           fontFamily: "Inter, sans-serif",
+          filter: "drop-shadow(2px 3px 3px rgba(249, 68, 228, 0.957))",
         }}
       >
-        MindFactory News
+        MindFactory Noticias
       </span>
-      <Button
-        variant="gradient"
-        gradient={{ from: "indigo", to: "grape", deg: 143 }}
-        size="md"
-        radius="xl"
-        boxShadow="md"
-      >
-        Crear noticia
-      </Button>
+      <Group>{actions}</Group>
     </header>
   );
 }
+Header.propTypes = {
+  actions: PropTypes.node,
+};
 
 export default Header;
