@@ -7,7 +7,7 @@ function LastNews({ lastNews, title }) {
 
   return (
     <>
-      <h2 style={{ textAlign: "center", margin: "20px 10px", color: "red" }}>{title}</h2>
+      <h2 style={{ textAlign: "center", margin: "20px 10px" }}>{title}</h2>
       <div
         style={{
           maxWidth: "1300px",

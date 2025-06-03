@@ -56,7 +56,7 @@ function NewsCarousel({ news }) {
               />
 
               <div style={{ position: "relative", zIndex: 2, padding: "20px" }}>
-                <Text size="xs" weight={700} transform="uppercase" mb={8} color="gray.3">
+                <Text size="xs" weight={700} transform="uppercase" mb={8} c="gray.3">
                   {item.category || "Noticia"}
                 </Text>
 

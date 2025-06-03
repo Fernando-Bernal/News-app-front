@@ -6,11 +6,15 @@ import NewsCarousel from "../components/NewsCarousel";
 import { Modal, Button } from "@mantine/core";
 import NewsForm from "../components/NewsForm";
 import SearchText from "../components/SearchText";
+import { useMediaQuery } from "@mantine/hooks";
+
 
 function Home() {
   const [news, setNews] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
+
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   useEffect(() => {
     axios
@@ -27,7 +31,7 @@ function Home() {
             onClick={() => setModalOpen(true)}
             variant="gradient"
             gradient={{ from: "indigo", to: "grape", deg: 143 }}
-            size="md"
+            size={isMobile ? "xs" : "sm"}
             radius="xl"
             boxShadow="md"
           >

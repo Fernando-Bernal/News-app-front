@@ -13,7 +13,7 @@ function NewsCardHome({ title, author, date, image_url }) {
       <Group position="apart" mt="md" mb="xs">
         <Text weight={700} size="lg" style={{ color: "#501aaf" }}>{title}</Text>
       </Group>
-      <Text size="sm" color="dimmed" mb="xs">
+      <Text size="sm" c="dimmed" mb="xs">
         {author} &bull; {formattedDate}
       </Text>
     </Card>

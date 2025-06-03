@@ -49,7 +49,7 @@ function NewsForm({ initialData, onSuccess, onCancel }) {
         autoClose: 3000,
       });
 
-      onSuccess && onSuccess();
+      onSuccess?.();
     } catch (err) {
       let errorMsg = "Error al guardar la noticia";
 
@@ -122,11 +122,11 @@ function NewsForm({ initialData, onSuccess, onCancel }) {
               required
               disabled={loading}
             />
-            <Group position="right" mt="md">
+            <Group display={"flex"} justify="space-between" align="center" style={{ marginTop: "1rem" }}>
               <Button variant="default" onClick={onCancel} disabled={loading} radius={"xl"}>
                 Cancelar
               </Button>
-              <Button type="submit" loading={loading} gradient={{ from: "indigo", to: "grape" }} radius={"xl"}>
+              <Button type="submit" loading={loading} variant="gradient" gradient={{ from: "indigo", to: "grape" }} radius={"xl"}>
                 {initialData ? "Actualizar noticia" : "Crear noticia"}
               </Button>
             </Group>

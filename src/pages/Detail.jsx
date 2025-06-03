@@ -10,7 +10,7 @@ import {
   Button,
   Modal,
   Group,
-  Modal as MantineModal
+  Modal as MantineModal,
 } from "@mantine/core";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -18,6 +18,7 @@ import Header from "../components/Header";
 import NewsCarousel from "../components/NewsCarousel";
 import NewsForm from "../components/NewsForm";
 import { notifications } from "@mantine/notifications";
+import { useMediaQuery } from "@mantine/hooks";
 
 function Detail() {
   const { id } = useParams();
@@ -27,6 +28,8 @@ function Detail() {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   useEffect(() => {
     axios
@@ -63,10 +66,10 @@ function Detail() {
     }
   };
 
-  if (loading) return <Loader size="xl" style={{ margin: "40px auto", display: "block" }} />;
+  if (loading) return <div  style={{height: "100vh", display: "flex", justifyContent: "center", alignItems:"center"}}> <Loader size="xl" /> </div>;
   if (!news)
     return (
-      <Text align="center" color="red">
+      <Text align="center" c="red">
         No se encontró la noticia.
       </Text>
     );
@@ -75,29 +78,29 @@ function Detail() {
     <>
       <Header
         actions={
-          <>
+          <Group spacing="xs" direction={isMobile ? "column" : "row"} align="flex-end" justify="flex-end">
             <Button
               onClick={() => setModalOpen(true)}
               variant="gradient"
               gradient={{ from: "indigo", to: "grape", deg: 143 }}
-              size="sm"
+              size={isMobile ? "xs" : "sm"}
               radius="xl"
-              boxShadow="md"
             >
               Editar noticia
             </Button>
             <Button
               color="red"
               variant="outline"
-              size="sm"
+              size={isMobile ? "xs" : "sm"}
               radius="xl"
               onClick={() => setConfirmDeleteOpen(true)}
             >
-              Eliminar noticia
+              Borrar noticia
             </Button>
-          </>
+          </Group>
         }
       />
+
       <Modal
         opened={modalOpen}
         onClose={() => setModalOpen(false)}
@@ -154,7 +157,7 @@ function Detail() {
           <Title order={2} mb="sm">
             {news.title}
           </Title>
-          <Text color="dimmed" size="sm" mb="md">
+          <Text c="dimmed" size="sm" mb="md">
             {news.author} &bull; {dayjs(news.date || news.createdAt).format("DD/MM/YYYY")}
           </Text>
           <Text size="md" style={{ whiteSpace: "pre-line" }}>

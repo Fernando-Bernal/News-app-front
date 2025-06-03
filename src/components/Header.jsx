@@ -33,7 +33,7 @@ function Header({ actions }) {
           src="/mf.png"
           alt="MindFactory Noticias"
           style={{
-            height: window.innerWidth >= 600 ? "80px" : "24px",
+            height: window.innerWidth >= 600 ? "80px" : "70px",
             transition: "height 0.2s",
             display: "block",
           }}
@@ -41,13 +41,6 @@ function Header({ actions }) {
       </button>
       <Group
         spacing="xs"
-        sx={{
-          "@media (max-width: 600px)": {
-            justifyContent: "flex-end",
-            width: "100%",
-            size: "xs",
-          },
-        }}
       >
         {actions}
       </Group>
