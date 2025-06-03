@@ -39,7 +39,7 @@ function SearchText({ setSearchResults }) {
         <form onSubmit={handleSearch}>
           <Stack spacing="sm">
             <TextInput
-              placeholder="Buscar por nombre o autor"
+              placeholder="Buscar por titulo o autor"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               icon={<IconSearch size={18} />}
