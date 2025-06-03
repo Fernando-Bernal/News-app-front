@@ -137,11 +137,13 @@ function Detail() {
           ¿Está seguro que desea borrar la nota <b>{news.title}</b>?
         </Text>
         <Group position="right">
-          <Button variant="default" onClick={() => setConfirmDeleteOpen(false)}>
+          <Button variant="default" onClick={() => setConfirmDeleteOpen(false)} radius={"xl"}>
             Cancelar
           </Button>
           <Button
             color="red"
+            radius={"xl"}
+            variant="filled"
             onClick={async () => {
               setConfirmDeleteOpen(false);
               await handleDelete();
